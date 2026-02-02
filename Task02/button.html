@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Moving Box</title>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        background-color: #1e90ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .big-box {
+        width: 600px;
+        height: 300px;
+        border: 5px solid white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .score-box {
+        width: 90px;
+        height: 50px;
+        background-color: rgb(186, 210, 30);
+        position: absolute;
+        top: 0px;
+        right: 0;
+    }
+
+    .small-box {
+        width: 50px;
+        height: 50px;
+        background-color: chocolate;
+        position: absolute;
+        top: 125px;
+        left: 0;
+    }
+
+    .animate {
+        animation: moveBox 2s linear infinite alternate;
+    }
+
+    @keyframes moveBox {
+        from {
+            left: 0;
+        }
+        to {
+            left: 550px; 
+        }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="big-box">
+        <div class="score-box"></div>
+        <div class="small-box" id="box"></div>
+    </div>
+
+    <button onclick="ChangeSpeed(-0.5)">Speed Up</button>
+    <button onclick="ChangeSpeed(0.5)">Speed Down</button>
+    <button onclick="startAnimation()">Move</button>
+
+
+<script>
+    let speed = 2; // starting speed (seconds)
+
+    function ChangeSpeed(change) {
+        speed += change;
+
+        // limits
+        if (speed < 0.5) speed = 0.5;
+        if (speed > 5) speed = 5;
+
+        document.getElementById("box").style.animationDuration = speed + "s";
+    }
+
+    function startAnimation() {
+        document.getElementById("box").classList.toggle("animate");
+        document.getElementById("box").style.animationDuration = speed + "s";
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Art Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Abstract Art Gallery</div>
+        <ul class="nav-links">
+            <li><a href="#main">Main</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+        <div class="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <section id="main" class="section main-section">
+        <h1>Welcome to the Abstract Art Gallery</h1>
+        <p>Explore the beauty of abstract art from talented artists around the world.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <h2>About Us</h2>
+        <p>Our gallery celebrates creativity and innovation in abstract art. We showcase unique artworks that inspire imagination and emotion.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <img src="../images/i1.png" alt="Art 1">
+            <img src="../images/i2.png" alt="Art 2">
+            <img src="../images/i3.png" alt="Art 3">
+            <img src="../images/i4.png" alt="Art 4">
+            <img src="../images/i5.jpg" alt="Art 5">
+            <img src="../images/i6.jpg" alt="Art 6">
+        </div>
+
+
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="section feedback-section">
+        <h2>Feedback</h2>
+        <form class="feedback-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Feedback" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Abstract Art Gallery</p>
+    </footer>
+
+    <script>
+        // Burger menu toggle for mobile
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
+    </script>
+</body>
+</html>

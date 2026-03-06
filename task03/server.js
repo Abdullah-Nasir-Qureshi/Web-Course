@@ -26,6 +26,20 @@ app.use(session({
     saveUninitialized: false
 }));
 
+// Middleware to check authentication
+const auth = (req, res, next) => {
+    if (req.session.user) {
+        next();
+    } else {
+        res.status(401).send('Please login first');
+    }
+};
+
+app.get('/dashboard', auth, (req, res) => {
+    res.send(`Welcome ${req.session.user}`);
+});
+
+
 app.get('/', (req, res) => {
     res.send('Server is running');
 });

@@ -68,6 +68,12 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.send('Logout successful');
+    });
+});
+
 app.listen(3000, () => {
     console.log('Server started on http://localhost:3000');
 });

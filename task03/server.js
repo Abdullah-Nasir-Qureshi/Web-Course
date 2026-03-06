@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const UserModel = mongoose.model('User', userSchema);
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,6 +28,30 @@ app.use(session({
 
 app.get('/', (req, res) => {
     res.send('Server is running');
+});
+
+const User = require('./user');
+
+app.post('/register', async (req, res) => {
+    try {
+        const userObj = new User(req.body.username, req.body.password);
+        await userObj.register(UserModel);
+        res.send('User registered successfully');
+    } catch (error) {
+        res.status(400).send('Registration failed');
+    }
+});
+
+app.post('/login', async (req, res) => {
+    const userObj = new User(req.body.username, req.body.password);
+    const loggedInUser = await userObj.login(UserModel);
+
+    if (loggedInUser) {
+        req.session.user = loggedInUser.username;
+        res.send('Login successful');
+    } else {
+        res.status(401).send('Invalid credentials');
+    }
 });
 
 app.listen(3000, () => {
